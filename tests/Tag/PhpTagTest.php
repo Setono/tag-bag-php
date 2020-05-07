@@ -1,0 +1,64 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Setono\TagBag\Tag;
+
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @covers \Setono\TagBag\Tag\PhpTag
+ */
+final class PhpTagTest extends TestCase
+{
+    /**
+     * @test
+     */
+    public function it_creates(): void
+    {
+        $tag = new PhpTag('key', 'template');
+        $this->assertInstanceOf(TagInterface::class, $tag);
+        $this->assertInstanceOf(PhpTagInterface::class, $tag);
+    }
+
+    /**
+     * @test
+     */
+    public function it_has_default_values(): void
+    {
+        $tag = new PhpTag('key', 'template');
+
+        $this->assertSame('key', $tag->getKey());
+        $this->assertSame('template', $tag->getTemplate());
+        $this->assertNull($tag->getSection());
+        $this->assertSame(0, $tag->getPriority());
+        $this->assertIsArray($tag->getDependents());
+        $this->assertCount(0, $tag->getDependents());
+        $this->assertTrue($tag->willReplace());
+        $this->assertIsArray($tag->getContext());
+        $this->assertCount(0, $tag->getContext());
+    }
+
+    /**
+     * @test
+     */
+    public function it_is_mutable(): void
+    {
+        $tag = new PhpTag('key', 'template');
+        $tag->setContext(['key' => 'value']);
+
+        $this->assertSame(['key' => 'value'], $tag->getContext());
+    }
+
+    /**
+     * @test
+     */
+    public function it_adds_parameters(): void
+    {
+        $tag = new PhpTag('key', 'template');
+        $tag->setContext(['key1' => 'value1']);
+        $tag->addContext('key2', 'value2');
+
+        $this->assertSame(['key1' => 'value1', 'key2' => 'value2'], $tag->getContext());
+    }
+}
