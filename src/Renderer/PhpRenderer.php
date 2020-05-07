@@ -5,14 +5,12 @@ declare(strict_types=1);
 namespace Setono\TagBag\Renderer;
 
 use Setono\PhpTemplates\Engine\EngineInterface;
-use Setono\TagBag\Tag\TagInterface;
 use Setono\TagBag\Tag\PhpTagInterface;
+use Setono\TagBag\Tag\TagInterface;
 
 final class PhpRenderer implements RendererInterface
 {
-    /**
-     * @var EngineInterface
-     */
+    /** @var EngineInterface */
     private $engine;
 
     public function __construct(EngineInterface $engine)

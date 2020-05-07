@@ -7,8 +7,8 @@ namespace Setono\TagBag\Renderer;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Setono\PhpTemplates\Engine\EngineInterface;
-use Setono\TagBag\Tag\Tag;
 use Setono\TagBag\Tag\PhpTag;
+use Setono\TagBag\Tag\Tag;
 
 /**
  * @covers \Setono\TagBag\Renderer\PhpRenderer
