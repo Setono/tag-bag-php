@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\TagBag\Tag;
 
-final class PhpTag extends Tag implements PhpTagInterface
+class PhpTag extends Tag implements PhpTagInterface
 {
     /** @var string */
     private $template;
