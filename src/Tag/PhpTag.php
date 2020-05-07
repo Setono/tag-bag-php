@@ -7,10 +7,10 @@ namespace Setono\TagBag\Tag;
 class PhpTag extends Tag implements PhpTagInterface
 {
     /** @var string */
-    private $template;
+    protected $template;
 
     /** @var array */
-    private $context = [];
+    protected $context = [];
 
     public function __construct(string $key, string $template)
     {
