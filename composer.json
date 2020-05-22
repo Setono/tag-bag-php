@@ -1,7 +1,7 @@
 {
-    "name": "setono/tag-bag-php",
+    "name": "setono/tag-bag-php-templates",
     "type": "library",
-    "description": "PHP tag and renderer for the tag bag library",
+    "description": "PHP templates tag and renderer for the tag bag library",
     "license": "MIT",
     "authors": [
         {
