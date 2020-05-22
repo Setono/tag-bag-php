@@ -10,13 +10,14 @@ class PhpTemplatesTag extends Tag implements PhpTemplatesTagInterface
     protected $template;
 
     /** @var array */
-    protected $context = [];
+    protected $context;
 
-    public function __construct(string $key, string $template)
+    public function __construct(string $template, array $context = [])
     {
-        parent::__construct($key);
-
         $this->template = $template;
+        $this->context = $context;
+
+        $this->setName('setono_tag_bag_php_templates_tag');
     }
 
     public function getTemplate(): string

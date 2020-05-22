@@ -16,7 +16,8 @@ final class PhpTemplatesTagTest extends TestCase
      */
     public function it_creates(): void
     {
-        $tag = new PhpTemplatesTag('key', 'template');
+        $tag = self::getTag();
+
         $this->assertInstanceOf(TagInterface::class, $tag);
         $this->assertInstanceOf(PhpTemplatesTagInterface::class, $tag);
     }
@@ -26,15 +27,10 @@ final class PhpTemplatesTagTest extends TestCase
      */
     public function it_has_default_values(): void
     {
-        $tag = new PhpTemplatesTag('key', 'template');
+        $tag = self::getTag();
 
-        $this->assertSame('key', $tag->getKey());
+        $this->assertSame('setono_tag_bag_php_templates_tag', $tag->getName());
         $this->assertSame('template', $tag->getTemplate());
-        $this->assertNull($tag->getSection());
-        $this->assertSame(0, $tag->getPriority());
-        $this->assertIsArray($tag->getDependents());
-        $this->assertCount(0, $tag->getDependents());
-        $this->assertTrue($tag->willReplace());
         $this->assertIsArray($tag->getContext());
         $this->assertCount(0, $tag->getContext());
     }
@@ -44,7 +40,7 @@ final class PhpTemplatesTagTest extends TestCase
      */
     public function it_is_mutable(): void
     {
-        $tag = new PhpTemplatesTag('key', 'template');
+        $tag = self::getTag();
         $tag->setContext(['key' => 'value']);
 
         $this->assertSame(['key' => 'value'], $tag->getContext());
@@ -55,10 +51,15 @@ final class PhpTemplatesTagTest extends TestCase
      */
     public function it_adds_parameters(): void
     {
-        $tag = new PhpTemplatesTag('key', 'template');
+        $tag = self::getTag();
         $tag->setContext(['key1' => 'value1']);
         $tag->addContext('key2', 'value2');
 
         $this->assertSame(['key1' => 'value1', 'key2' => 'value2'], $tag->getContext());
+    }
+
+    private static function getTag(): PhpTemplatesTag
+    {
+        return new PhpTemplatesTag('template');
     }
 }
