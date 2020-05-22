@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\TagBag\Tag;
 
-interface PhpTagInterface extends TagInterface
+interface PhpTemplatesTagInterface extends TagInterface
 {
     /**
      * Returns the PHP template

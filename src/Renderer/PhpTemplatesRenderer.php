@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Setono\TagBag\Renderer;
 
 use Setono\PhpTemplates\Engine\EngineInterface;
-use Setono\TagBag\Tag\PhpTagInterface;
+use Setono\TagBag\Tag\PhpTemplatesTagInterface;
 use Setono\TagBag\Tag\TagInterface;
 
-final class PhpRenderer implements RendererInterface
+final class PhpTemplatesRenderer implements RendererInterface
 {
     /** @var EngineInterface */
     private $engine;
@@ -20,11 +20,11 @@ final class PhpRenderer implements RendererInterface
 
     public function supports(TagInterface $tag): bool
     {
-        return $tag instanceof PhpTagInterface;
+        return $tag instanceof PhpTemplatesTagInterface;
     }
 
     /**
-     * @param PhpTagInterface|TagInterface $tag
+     * @param PhpTemplatesTagInterface|TagInterface $tag
      */
     public function render(TagInterface $tag): string
     {

@@ -7,22 +7,22 @@ namespace Setono\TagBag\Renderer;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Setono\PhpTemplates\Engine\EngineInterface;
-use Setono\TagBag\Tag\PhpTag;
+use Setono\TagBag\Tag\PhpTemplatesTag;
 use Setono\TagBag\Tag\Tag;
 
 /**
- * @covers \Setono\TagBag\Renderer\PhpRenderer
+ * @covers \Setono\TagBag\Renderer\PhpTemplatesRenderer
  */
-final class PhpRendererTest extends TestCase
+final class PhpTemplatesRendererTest extends TestCase
 {
     /**
      * @test
      */
     public function it_supports_php_tag_interface(): void
     {
-        $renderer = new PhpRenderer($this->getEngine());
+        $renderer = new PhpTemplatesRenderer($this->getEngine());
 
-        $this->assertTrue($renderer->supports(new PhpTag('key', 'template')));
+        $this->assertTrue($renderer->supports(self::getTag()));
     }
 
     /**
@@ -30,9 +30,10 @@ final class PhpRendererTest extends TestCase
      */
     public function it_does_not_support_tag_interface(): void
     {
-        $renderer = new PhpRenderer($this->getEngine());
+        $renderer = new PhpTemplatesRenderer($this->getEngine());
 
-        $this->assertFalse($renderer->supports(new Tag('key')));
+        $this->assertFalse($renderer->supports(new class() extends Tag {
+        }));
     }
 
     /**
@@ -47,13 +48,18 @@ final class PhpRendererTest extends TestCase
             ->willReturn('content')
         ;
 
-        $renderer = new PhpRenderer($env);
+        $renderer = new PhpTemplatesRenderer($env);
 
-        $tag = (new PhpTag('key', 'template'))
+        $tag = (self::getTag())
             ->addContext('context_key', 'context_value')
         ;
 
         $this->assertSame('content', $renderer->render($tag));
+    }
+
+    private static function getTag(): PhpTemplatesTag
+    {
+        return new PhpTemplatesTag('template');
     }
 
     /**
