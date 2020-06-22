@@ -11,19 +11,13 @@
     ],
     "require": {
         "php": "^7.2",
-        "setono/php-templates": "^1.0@dev",
-        "setono/tag-bag": "^1.0@dev",
+        "setono/php-templates": "^1.0",
+        "setono/tag-bag": "^1.0",
         "thecodingmachine/safe": "^1.0"
     },
     "require-dev": {
-        "ergebnis/composer-normalize": "^2.5.1",
-        "korbeil/phpstan-generic-rules": "^0.2.4",
-        "phpstan/extension-installer": "^1.0.4",
-        "phpstan/phpstan": "^0.12.23",
-        "phpstan/phpstan-strict-rules": "^0.12.2",
         "phpunit/phpunit": "^8.5.4",
-        "sylius-labs/coding-standard": "^3.1.2",
-        "thecodingmachine/phpstan-safe-rule": "^1.0"
+        "setono/code-quality-pack": "^1.0"
     },
     "config": {
         "sort-packages": true
@@ -48,9 +42,6 @@
         "analyse": "vendor/bin/phpstan analyse -c phpstan.neon -l max src",
         "check-style": "vendor/bin/ecs check --ansi src/ tests/",
         "fix-style": "vendor/bin/ecs check --fix --ansi src/ tests/",
-        "phpunit": "vendor/bin/phpunit",
-        "test": [
-            "@phpunit"
-        ]
+        "phpunit": "vendor/bin/phpunit"
     }
 }
