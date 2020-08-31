@@ -22,7 +22,7 @@ final class PhpTemplatesRendererTest extends TestCase
     {
         $renderer = new PhpTemplatesRenderer($this->getEngine());
 
-        $this->assertTrue($renderer->supports(self::getTag()));
+        self::assertTrue($renderer->supports(self::getTag()));
     }
 
     /**
@@ -32,7 +32,7 @@ final class PhpTemplatesRendererTest extends TestCase
     {
         $renderer = new PhpTemplatesRenderer($this->getEngine());
 
-        $this->assertFalse($renderer->supports(new class() extends Tag {
+        self::assertFalse($renderer->supports(new class() extends Tag {
         }));
     }
 
@@ -44,7 +44,7 @@ final class PhpTemplatesRendererTest extends TestCase
         $env = $this->getEngine();
         $env
             ->method('render')
-            ->with('template', ['context_key' => 'context_value'])
+            ->with('template.php', ['context_key' => 'context_value'])
             ->willReturn('content')
         ;
 
@@ -54,12 +54,12 @@ final class PhpTemplatesRendererTest extends TestCase
             ->addContext('context_key', 'context_value')
         ;
 
-        $this->assertSame('content', $renderer->render($tag));
+        self::assertSame('content', $renderer->render($tag));
     }
 
     private static function getTag(): PhpTemplatesTag
     {
-        return new PhpTemplatesTag('template');
+        return new PhpTemplatesTag('template.php');
     }
 
     /**

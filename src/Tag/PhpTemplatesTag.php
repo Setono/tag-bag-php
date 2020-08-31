@@ -18,4 +18,9 @@ class PhpTemplatesTag extends TemplateTag implements PhpTemplatesTagInterface
 
         return $this;
     }
+
+    public function getTemplateType(): string
+    {
+        return 'php';
+    }
 }
