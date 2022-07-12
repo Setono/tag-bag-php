@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": ">=7.2",
         "setono/php-templates": "^1.0",
         "setono/tag-bag": "^1.2",
         "thecodingmachine/safe": "^1.0"
